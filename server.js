@@ -27,6 +27,15 @@ const io = socketIO(server, {
   },
 });
 
+app.get("/api/hello", async (req, res) => {
+  try {
+    return "hello the app is deployed";
+  } catch (error) {
+    console.error("Error fetching messages:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 app.get("/api/messages", async (req, res) => {
   try {
     const [rows] = await db.query("SELECT * FROM messages where is_delete=0;");
