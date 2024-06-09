@@ -26,10 +26,9 @@ const io = socketIO(server, {
     credentials: true,
   },
 });
-
 app.get("/api/hello", async (req, res) => {
   try {
-    return "hello the app is deployed";
+    res.send("hello the app is deployed");
   } catch (error) {
     console.error("Error fetching messages:", error);
     res.status(500).json({ message: "Internal server error" });
